@@ -1,0 +1,23 @@
+# Para archivos .env en la raíz y en los subdirectorios.
+.env
+*/.env
+
+# Ignorar las carpetas de Node.
+*/node_modules
+npm-debug.log
+yarn-error.log
+
+# Ignorar la carpeta del entorno virtual.
+venv/
+
+# Otros archivos.
+__pycache__/
+
+# Ignorar archivos de configuración del sistema operativo.
+ehthumbs.db
+Thumbs.db
+
+# Ignorar archivos de configuración del editor.
+.idea/
+.vscode/
+*.swp
