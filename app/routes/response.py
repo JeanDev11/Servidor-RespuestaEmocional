@@ -16,7 +16,7 @@ def generar_respuesta():
         respuesta_ai_cleaned = limpiar_respuesta(respuesta_ai)
         saludo = f"¡Hola, {nombre_input.capitalize()}! "
 
-        return jsonify({"response Filtrado": [saludo] + respuesta_ai_cleaned, "response IA": [respuesta_ai]}), 200
+        return jsonify({"response": [saludo] + respuesta_ai_cleaned, "response IA": [respuesta_ai]}), 200
     except Exception:
         respuestas = generar_respuesta_predeterminada(emociones)
         saludo = f"¡Hola, {nombre_input.capitalize()}! "
