@@ -1,12 +1,12 @@
 import google.generativeai as genai
 from flask import current_app
 
-def generar_respuesta_ai(emocion_input):
+def generar_respuesta_ai(emociones_str):
     genai.configure(api_key=current_app.config["GOOGLE_API_KEY"])
     model = genai.GenerativeModel("gemini-1.5-flash")
     prompt = (
         "Elimina el hilo de la conversación anterior."
-        f"\nHola, me siento {emocion_input}."
+        f"\nHola, me siento {emociones_str}."
         "Genera cuatro mensajes de apoyo empático siguiendo estas reglas:"
         "\n1. Los mensajes deben ser afirmativos, nunca en forma de pregunta."
         "\n2. Cada mensaje debe mostrar comprensión, validación o apoyo."

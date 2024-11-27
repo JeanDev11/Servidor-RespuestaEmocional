@@ -2,7 +2,7 @@ import random
 
 # Diccionario de mensajes predeterminados específicos por emoción
 mensajes_predeterminados = {
-    "sorprendido": [
+    "sorpresa": [
         "A veces, lo inesperado puede traernos nuevas perspectivas. Tómate tu tiempo para procesarlo.",
         "Es normal sentir sorpresa. Respira y trata de adaptarte a esta nueva información poco a poco.",
         "Las sorpresas nos recuerdan que la vida es impredecible. Encuentra lo positivo en lo inesperado.",
@@ -26,7 +26,7 @@ mensajes_predeterminados = {
         "Aprovecha la neutralidad para reflexionar y establecer tus próximos objetivos.",
         "Los momentos de equilibrio son ideales para practicar la gratitud por las pequeñas cosas."
     ],
-    "tristeza": [
+    "triste": [
         "La tristeza es natural y parte de la vida. No estás solo; permítete sentirla.",
         "A veces, permitirse estar triste ayuda a sanar. Recuerda que esta emoción también pasará.",
         "Habla con alguien en quien confíes. Compartir lo que sientes puede aliviar tu carga.",
@@ -62,17 +62,31 @@ mensaje_general = [
 
 def generar_respuesta_predeterminada(emociones):
     respuestas = []
-    
-    # Generar respuestas predeterminadas para cada emoción
-    for emocion in emociones:
-        if emocion in mensajes_predeterminados:
-            # Si hay mensajes predeterminados, seleccionamos algunos aleatorios
-            print(min(3, len(mensajes_predeterminados[emocion])))
-            mensajes = random.sample(mensajes_predeterminados[emocion], min(3, len(mensajes_predeterminados[emocion])))
-            respuestas.extend(mensajes)
+
+    # Verificar si las emociones están vacías
+    if not emociones:
+        # Si no hay emociones relevantes, usar respuestas generales
+        num_mensajes = random.randint(3, 4)
+        respuestas.extend(random.sample(mensaje_general, num_mensajes))
+
+    else: 
+        if len(emociones) >= 4: 
+            num_mensajesXemocion = 2
+        elif len(emociones) >= 2 and len(emociones) <= 3:
+            num_mensajesXemocion = 2
         else:
-            # Si no hay mensajes predeterminados, usamos el mensaje general
-            respuestas.append(random.choice(mensaje_general))
+            num_mensajesXemocion = 3
+
+        # Generar respuestas predeterminadas para cada emoción
+        for emocion in emociones:
+            if emocion in mensajes_predeterminados:
+                # Si hay mensajes predeterminados, seleccionamos algunos aleatorios
+                mensajes = random.sample(mensajes_predeterminados[emocion], num_mensajesXemocion)
+                respuestas.extend(mensajes)
+            else:
+                # Si no hay mensajes predeterminados, usamos el mensaje general
+                respuestas.append(random.choice(mensaje_general))
+                
     return respuestas
 
 
