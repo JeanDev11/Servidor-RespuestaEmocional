@@ -46,7 +46,15 @@ Descripción: Genera una respuesta empática basada en la emoción proporcionada
   ```bash
   {
       "nombre": "******"
-      "emocion": "******"
+      "emociones": {
+          "Disgustado": #.##,
+          "Enojado": #.##,
+          "Feliz": #.##,
+          "Miedo": #.##,
+          "Neutral": #.##,
+          "Sorpresa": #.##,
+          "Triste": #.##
+     }
   }
   ```
 
